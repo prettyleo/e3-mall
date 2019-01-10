@@ -22,7 +22,6 @@
             <artifactId>e3-manager-interface</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <!-- spring的依赖 -->
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -35,10 +34,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -55,10 +50,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
         </dependency>
     </dependencies>
 

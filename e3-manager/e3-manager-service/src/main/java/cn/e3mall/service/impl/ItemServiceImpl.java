@@ -27,17 +27,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public TbItem getItemById(Long itemId) {
-        System.out.println("请求开始");
-        System.out.println(tbItemMapper.toString());
-
-        try {
-            tbItemMapper.selectByPrimaryKey(itemId);
-        } catch (Exception e) {
-            System.out.println("Druid异常");
-            e.printStackTrace();
-        }
-
-        return  null;
+        return tbItemMapper.selectByPrimaryKey(itemId);
     }
 }
 

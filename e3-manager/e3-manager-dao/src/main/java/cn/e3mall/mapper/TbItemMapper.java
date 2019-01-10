@@ -1,6 +1,7 @@
 package cn.e3mall.mapper;
 
 import cn.e3mall.entity.model.TbItem;
+import org.apache.ibatis.annotations.Param;
 
 public interface TbItemMapper {
     int deleteByPrimaryKey(Long id);
@@ -9,7 +10,7 @@ public interface TbItemMapper {
 
     int insertSelective(TbItem record);
 
-    TbItem selectByPrimaryKey(Long id);
+    TbItem selectByPrimaryKey(@Param("id") Long id);
 
     int updateByPrimaryKeySelective(TbItem record);
 

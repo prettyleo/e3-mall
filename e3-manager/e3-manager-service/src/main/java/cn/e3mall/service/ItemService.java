@@ -7,5 +7,5 @@ import cn.e3mall.entity.model.TbItem;
  */
 public interface ItemService {
 
-    TbItem getItemById(long itemId);
+    TbItem getItemById(Long itemId);
 }

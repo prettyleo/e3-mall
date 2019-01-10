@@ -22,12 +22,14 @@ public class ItemController {
     @Autowired
     private ItemService itemService;
 
-
     @RequestMapping("/{itemId}")
     @ResponseBody
     public TbItem getItemById(@PathVariable("itemId") Long itemId) {
         System.out.println("请求进来了");
-        return itemService.getItemById(itemId);
+        itemService.getItemById(itemId);
+        System.out.println("请求结束");
+        return null;
     }
+
 
 }

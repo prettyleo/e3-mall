@@ -20,9 +20,24 @@ public class ItemServiceImpl implements ItemService {
     @Resource
     private TbItemMapper tbItemMapper;
 
-    @Override
-    public TbItem getItemById(long itemId) {
 
-        return tbItemMapper.selectByPrimaryKey(itemId);
+    public ItemServiceImpl() {
+        System.out.println(Thread.currentThread().getName() + "创建service实例");
+    }
+
+    @Override
+    public TbItem getItemById(Long itemId) {
+        System.out.println("请求开始");
+        System.out.println(tbItemMapper.toString());
+
+        try {
+            tbItemMapper.selectByPrimaryKey(itemId);
+        } catch (Exception e) {
+            System.out.println("Druid异常");
+            e.printStackTrace();
+        }
+
+        return  null;
     }
 }
+

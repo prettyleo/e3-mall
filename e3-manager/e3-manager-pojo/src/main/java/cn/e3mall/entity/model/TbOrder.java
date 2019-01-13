@@ -2,7 +2,7 @@ package cn.e3mall.entity.model;
 
 import java.util.Date;
 
-public class TbOrder {
+public class TbOrder extends BasePo {
     private String orderId;
 
     private String payment;

@@ -2,7 +2,7 @@ package cn.e3mall.entity.model;
 
 import java.util.Date;
 
-public class TbUser {
+public class TbUser extends BasePo {
     private Long id;
 
     private String username;

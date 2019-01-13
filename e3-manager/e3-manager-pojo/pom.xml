@@ -10,6 +10,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>e3-manager-pojo</artifactId>
     <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 
 </project>

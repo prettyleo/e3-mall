@@ -1,6 +1,6 @@
 package cn.e3mall.entity.model;
 
-public class TbOrderItem {
+public class TbOrderItem extends BasePo {
     private String id;
 
     private String itemId;

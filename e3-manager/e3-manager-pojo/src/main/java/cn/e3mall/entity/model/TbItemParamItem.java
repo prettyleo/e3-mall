@@ -2,7 +2,7 @@ package cn.e3mall.entity.model;
 
 import java.util.Date;
 
-public class TbItemParamItem {
+public class TbItemParamItem extends BasePo {
     private Long id;
 
     private Long itemId;

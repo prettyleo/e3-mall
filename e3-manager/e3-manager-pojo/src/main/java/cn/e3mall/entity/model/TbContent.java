@@ -1,28 +1,47 @@
 package cn.e3mall.entity.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
-public class TbContent {
+@Table(name = "tb_content")
+public class TbContent extends BasePo {
+
+    private static final long serialVersionUID = 1638174081946603714L;
+
+    @Id
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "category_id")
     private Long categoryId;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "sub_title")
     private String subTitle;
 
+    @Column(name = "title_desc")
     private String titleDesc;
 
+    @Column(name = "url")
     private String url;
 
+    @Column(name = "pic")
     private String pic;
 
+    @Column(name = "pic2")
     private String pic2;
 
+    @Column(name = "created")
     private Date created;
 
+    @Column(name = "updated")
     private Date updated;
 
+    @Column(name = "content")
     private String content;
 
     public Long getId() {

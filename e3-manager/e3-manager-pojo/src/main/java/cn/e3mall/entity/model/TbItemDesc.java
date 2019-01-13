@@ -2,7 +2,7 @@ package cn.e3mall.entity.model;
 
 import java.util.Date;
 
-public class TbItemDesc {
+public class TbItemDesc extends BasePo {
     private Long itemId;
 
     private Date created;

@@ -1,28 +1,47 @@
 package cn.e3mall.entity.model;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
-public class TbItem {
+@Table(name = "tb_item")
+public class TbItem extends BasePo {
+
+    private static final long serialVersionUID = -3522898387008031875L;
+
+    @Id
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "sell_point")
     private String sellPoint;
 
+    @Column(name = "price")
     private Long price;
 
+    @Column(name = "num")
     private Integer num;
 
+    @Column(name = "barcode")
     private String barcode;
 
+    @Column(name = "image")
     private String image;
 
+    @Column(name = "cid")
     private Long cid;
 
+    @Column(name = "status")
     private Byte status;
 
+    @Column(name = "created")
     private Date created;
 
+    @Column(name = "updated")
     private Date updated;
 
     public Long getId() {

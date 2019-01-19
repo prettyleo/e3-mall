@@ -1,8 +1,15 @@
 package cn.e3mall.entity.model;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+@Table(name = "tb_item_cat")
 public class TbItemCat extends BasePo {
+
+    private static final long serialVersionUID = -7632513583181529330L;
+
+    @Id
     private Long id;
 
     private Long parentId;

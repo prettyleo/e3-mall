@@ -2,6 +2,7 @@ package cn.e3mall.controller;
 
 import cn.e3mall.entity.model.TbItem;
 import cn.e3mall.service.ItemService;
+import cn.e3mall.util.E3Result;
 import cn.e3mall.vo.resp.PageResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,6 @@ public class ItemController {
     @RequestMapping("/{itemId}")
     @ResponseBody
     public TbItem getItemById(@PathVariable("itemId") Long itemId) {
-        log.info("getItemById请求开始");
         return itemService.getItemById(itemId);
     }
 
@@ -40,6 +40,16 @@ public class ItemController {
     @ResponseBody
     public PageResult getList(@RequestParam("page") Integer page, @RequestParam("rows") Integer rows ) {
         return itemService.getItemList(page, rows);
+    }
+
+    /**
+     * 商品添加功能
+     */
+    @RequestMapping(value="/save", method=RequestMethod.POST)
+    @ResponseBody
+    public E3Result addItem(TbItem item, String desc) {
+        E3Result result = itemService.addItem(item, desc);
+        return result;
     }
 
 }

@@ -1,6 +1,7 @@
 package cn.e3mall.service;
 
 import cn.e3mall.entity.model.TbItem;
+import cn.e3mall.util.E3Result;
 import cn.e3mall.vo.resp.PageResult;
 
 /**
@@ -22,4 +23,15 @@ public interface ItemService {
      * @return
      */
     PageResult getItemList(Integer page, Integer rows);
+
+
+    /**
+     * @Description: 添加商品
+     * @param item 其余请求表单内容
+     * @param desc 富文本内容
+     * @Return: E3Result
+     * @Author: SLY
+     * @Date: 2019/1/19 10:42
+     */
+    E3Result addItem(TbItem item, String desc);
 }

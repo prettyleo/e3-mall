@@ -3,15 +3,19 @@ package cn.e3mall.util;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 淘淘商城自定义响应结构
  */
-public class E3Result {
+public class E3Result implements Serializable {
+
+
 
     // 定义jackson对象
     private static final ObjectMapper MAPPER = new ObjectMapper();
+    private static final long serialVersionUID = 8453858671536544962L;
 
     // 响应业务状态
     private Integer status;

@@ -8,12 +8,20 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>e3-content</artifactId>
     <packaging>pom</packaging>
     <modules>
-
+        <module>e3-content-interface</module>
+        <module>e3-content-service</module>
     </modules>
 
-    <artifactId>e3-content</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>cn.e3mall</groupId>
+            <artifactId>e3-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

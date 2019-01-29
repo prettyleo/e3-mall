@@ -1,8 +1,13 @@
 package cn.e3mall.entity.model;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 public class TbContentCategory extends BasePo {
+
+    @Id
+    @GeneratedValue(generator = "UUID")
     private Long id;
 
     private Long parentId;

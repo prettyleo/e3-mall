@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Cache-Control" content="max-age=300" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>${query} - 商品搜索 - 宜立方商城</title>
+<title>${query} - 商品搜索 - 宜立方商城666</title>
 	<link rel="stylesheet" type="text/css" href="/css/productList.css" />
 <link rel="stylesheet" type="text/css" href="/css/base_w1200.css" />
 <link rel="stylesheet" type="text/css" href="/css/common.css" />
@@ -36,21 +36,22 @@
     <div class="r-filter">
       <div class="f-sort">
         <div class="pagin">
-          <span class="txt"><span class="n">${page }</span>/${totalPages }</span>
-          <span class="prev">上一页</span><span class="next">下一页</span>       	</div>
-        <div class="total">共<span>${recourdCount }</span>个商品</div>
+          <span class="txt"><span class="n">${page}</span>/${totalPages}</span>
+          <span class="prev">上一页</span><span class="next">下一页</span>
+        </div>
+        <div class="total">共<span>${recordCount}</span>个商品</div>
       </div>
     </div>
         
     <a name="prolist" id="prolist"></a>
     <div class="p-list">
       <ul class="list-all">
-         <c:forEach items="${itemList }" var="item">
+         <c:forEach items="${itemList}" var="item">
          <li>
             <div class="l-wrap">
 				<div class="pic">
 					<a class="trackref" href="http://localhost:8086/item/${item.id}.html" title="" target="_blank">
-						<img src="${item.images[0] }" style="display:inline"/>
+						<img src="${item.image}" style="display:inline"/>
 					</a>
 				</div>
 	            <div class="price">

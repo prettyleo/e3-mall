@@ -11,6 +11,8 @@ import org.apache.solr.common.SolrInputDocument;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 /**
  * FileName: SolrTest
@@ -20,6 +22,8 @@ import java.io.IOException;
  * @create: 2019/1/26
  */
 public class SolrTest {
+
+    private static final String DEFAULT = "df";
 
     @Test
     public void testAddDocumentTOSolr() throws IOException, SolrServerException {
@@ -84,23 +88,30 @@ public class SolrTest {
         }
     }
 
-    /**
-     * @Description: solr复杂查询
-     * @param:
-     * @Return: void
-     * @Author: SLY
-     * @Date:   2019/1/28 23:50
-     */
     @Test
-    public void solrQueryFlex() {
+    public void solrQueryFlex1() throws Exception {
         // 创建SolrServer对象
+        SolrServer solrServer = new HttpSolrServer("http://192.168.25.128:8080/solr/collection1");
+        // 创建查询对象并设置查询条件
+        SolrQuery query = new SolrQuery();
+        query.set(DEFAULT, "item_title");
+        query.setQuery("手机");
+        query.setHighlight(true);
+        query.setHighlightSimplePre("<em>");
+        query.setHighlightSimplePost("</em>");
 
-        // 创建SolrQuery对象
+        // 提交查询
+        QueryResponse response = solrServer.query(query);
 
-        // 设置查询条件
-
-        // 执行查询获取结果
-
+        // 获取hightlight结果, 如果highlight中没有结果则从normal中查找
+        SolrDocumentList results = response.getResults();
+        Map<String, Map<String, List<String>>> highlightingResults = response.getHighlighting();
+        for (String key : highlightingResults.keySet()) {
+            Map<String, List<String>> stringListMap = highlightingResults.get(key);
+            System.out.println("key: " + key + ", value: " + stringListMap.get("item_title"));
+        }
     }
+
+
 
 }

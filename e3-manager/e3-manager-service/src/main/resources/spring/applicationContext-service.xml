@@ -11,7 +11,55 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
     
     <!--配置包扫描器-->
-    <context:component-scan base-package="cn.e3mall.service"/>
+    <context:component-scan base-package="cn.e3mall"/>
+    <!--加载配置文件-->
+    <context:property-placeholder location="classpath:config/*.properties"/>
+
+    <!--redis配置(单机)-->
+    <bean id="jedisClientPool" class="cn.e3mall.jedis.JedisClientPool">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="host" value="${jedisPool.ip}"/>
+        <constructor-arg name="port" value="${jedisPool.port}"/>
+    </bean>
+
+    <!--redis配置(集群)-->
+    <!--<bean class="cn.e3mall.jedis.JedisClientCluster">-->
+    <!--<property name="jedisCluster" ref="jedisCluster"/>-->
+    <!--</bean>-->
+    <!--<bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">-->
+    <!--<constructor-arg name="nodes">-->
+    <!--<set>-->
+    <!--<bean class="redis.clients.jedis.HostAndPort">-->
+    <!--<constructor-arg name="host" value="${jedisCluster.ip.01}"/>-->
+    <!--<constructor-arg name="port" value="${jedisCluster.port.01}"/>-->
+    <!--</bean>-->
+    <!--<bean class="redis.clients.jedis.HostAndPort">-->
+    <!--<constructor-arg name="host" value="${jedisCluster.ip.02}"/>-->
+    <!--<constructor-arg name="port" value="${jedisCluster.port.02}"/>-->
+    <!--</bean>-->
+    <!--<bean class="redis.clients.jedis.HostAndPort">-->
+    <!--<constructor-arg name="host" value="${jedisCluster.ip.03}"/>-->
+    <!--<constructor-arg name="port" value="${jedisCluster.port.03}"/>-->
+    <!--</bean>-->
+    <!--<bean class="redis.clients.jedis.HostAndPort">-->
+    <!--<constructor-arg name="host" value="${jedisCluster.ip.04}"/>-->
+    <!--<constructor-arg name="port" value="${jedisCluster.port.04}"/>-->
+    <!--</bean>-->
+    <!--<bean class="redis.clients.jedis.HostAndPort">-->
+    <!--<constructor-arg name="host" value="${jedisCluster.ip.05}"/>-->
+    <!--<constructor-arg name="port" value="${jedisCluster.port.05}"/>-->
+    <!--</bean>-->
+    <!--<bean class="redis.clients.jedis.HostAndPort">-->
+    <!--<constructor-arg name="host" value="${jedisCluster.ip.06}"/>-->
+    <!--<constructor-arg name="port" value="${jedisCluster.port.06}"/>-->
+    <!--</bean>-->
+    <!--</set>-->
+    <!--</constructor-arg>-->
+    <!--</bean>-->
+
 
     <!-- 使用dubbo发布服务 -->
     <!-- 提供方应用信息，用于计算依赖关系 -->
@@ -22,6 +70,7 @@
     <!-- 声明需要暴露的服务接口 -->
     <dubbo:service interface="cn.e3mall.service.ItemService" ref="itemServiceImpl" timeout="600000" />
     <dubbo:service interface="cn.e3mall.service.ItemCatService" ref="itemCatServiceImpl" timeout="600000"/>
+    <dubbo:service interface="cn.e3mall.service.ItemDescService" ref="itemDescServiceImpl" timeout="600000"/>
 
 
 </beans>

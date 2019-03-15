@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+    
+    <!--加载配置文件-->
+    <context:property-placeholder location="classpath:config/*.properties"/>
+    
+    <!--数据库连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxActive" value="10"/>
+        <property name="minIdle" value="5"/>
+    </bean>
+
+    <!--让spring管理sqlSessionFactoryBean-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--数据库连接池-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--加载mybatis的全局配置文件-->
+        <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"/>
+        <!--扫描xml映射文件-->
+        <property name="mapperLocations" value="classpath:mappers/*.xml"/>
+        <!--扫描实体类-->
+        <property name="typeAliasesPackage" value="cn.e3mall.entity.model"/>
+
+    </bean>
+
+    <!--扫描mapper包, 使用tk包的MapperScannerConfigurer-->
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.e3mall.mapper"/>
+    </bean>
+
+    <!--redis配置(单机)-->
+    <bean id="jedisClientPool" class="cn.e3mall.jedis.JedisClientPool">
+        <property name="jedisPool" ref="jedisPool"/>
+    </bean>
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
+        <constructor-arg name="host" value="${jedisPool.ip}"/>
+        <constructor-arg name="port" value="${jedisPool.port}"/>
+    </bean>
+
+    <!--redis配置(集群)-->
+    <!--<bean class="cn.e3mall.jedis.JedisClientCluster">-->
+        <!--<property name="jedisCluster" ref="jedisCluster"/>-->
+    <!--</bean>-->
+    <!--<bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">-->
+        <!--<constructor-arg name="nodes">-->
+            <!--<set>-->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="${jedisCluster.ip.01}"/>-->
+                    <!--<constructor-arg name="port" value="${jedisCluster.port.01}"/>-->
+                <!--</bean>-->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="${jedisCluster.ip.02}"/>-->
+                    <!--<constructor-arg name="port" value="${jedisCluster.port.02}"/>-->
+                <!--</bean>-->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="${jedisCluster.ip.03}"/>-->
+                    <!--<constructor-arg name="port" value="${jedisCluster.port.03}"/>-->
+                <!--</bean>-->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="${jedisCluster.ip.04}"/>-->
+                    <!--<constructor-arg name="port" value="${jedisCluster.port.04}"/>-->
+                <!--</bean>-->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="${jedisCluster.ip.05}"/>-->
+                    <!--<constructor-arg name="port" value="${jedisCluster.port.05}"/>-->
+                <!--</bean>-->
+                <!--<bean class="redis.clients.jedis.HostAndPort">-->
+                    <!--<constructor-arg name="host" value="${jedisCluster.ip.06}"/>-->
+                    <!--<constructor-arg name="port" value="${jedisCluster.port.06}"/>-->
+                <!--</bean>-->
+            <!--</set>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+
+</beans>

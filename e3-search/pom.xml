@@ -21,6 +21,17 @@
             <artifactId>e3-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <!--activeMQ-->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-core</artifactId>
+            <version>${activemq-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-pool</artifactId>
+            <version>${activemq-pool.version}</version>
+        </dependency>
     </dependencies>
 
 

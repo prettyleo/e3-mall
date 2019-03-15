@@ -1,6 +1,7 @@
 package cn.e3mall.search.mapper;
 
 import cn.e3mall.vo.resp.SearchItem;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,4 +22,6 @@ public interface ItemMapper {
      * @Date:   2019/1/26 22:36
      */
     List<SearchItem> getItemList();
+
+    SearchItem getSearchItemByItemId(@Param("itemId") Long itemId);
 }
